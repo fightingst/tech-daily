@@ -1,313 +1,480 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>科技日报 - 2026年03月18日</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --bg-primary: #0c4a6e;
-            --bg-surface: #075985;
-            --bg-card: #0f172a;
-            --color-primary: #38bdf8;
-            --color-secondary: #7dd3fc;
-            --color-accent: #f472b6;
-            --color-text: #f0f9ff;
-            --color-text-muted: #7dd3fc;
-            --color-border: #1e40af;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, #0f172a 100%);
-            min-height: 100vh;
-            color: var(--color-text);
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 24px;
-        }
-        
-        /* Header */
-        header {
-            text-align: center;
-            padding: 48px 24px;
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(125, 211, 252, 0.05) 100%);
-            border-radius: 16px;
-            margin-bottom: 32px;
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            backdrop-filter: blur(10px);
-        }
-        
-        header h1 {
-            font-size: 2.75rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .date {
-            font-size: 1.125rem;
-            color: var(--color-text-muted);
-        }
-        
-        /* Section */
-        .section {
-            margin-bottom: 40px;
-        }
-        
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .section-title span {
-            font-size: 1.5rem;
-        }
-        
-        /* News Grid */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 20px;
-        }
-        
-        /* News Card */
-        .news-card {
-            background: rgba(15, 23, 42, 0.8);
-            border-radius: 12px;
-            padding: 24px;
-            border: 1px solid rgba(56, 189, 248, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            backdrop-filter: blur(8px);
-        }
-        
-        .news-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(56, 189, 248, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-        
-        .news-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-            border-radius: 12px 12px 0 0;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .news-card:hover::before {
-            opacity: 1;
-        }
-        
-        .news-rank {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: var(--bg-surface);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.8125rem;
-            color: var(--color-text-muted);
-            border: 1px solid var(--color-border);
-        }
-        
-        .news-rank.top3 {
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-            color: #1e293b;
-            border: none;
-        }
-        
-        .news-header {
-            margin-bottom: 12px;
-            padding-right: 40px;
-        }
-        
-        .news-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--color-text);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 8px;
-            line-height: 1.4;
-            transition: color 0.2s;
-        }
-        
-        .news-title:hover {
-            color: var(--color-primary);
-        }
-        
-        .news-source {
-            font-size: 0.75rem;
-            color: var(--color-accent);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        .news-desc {
-            font-size: 0.875rem;
-            color: rgba(240, 249, 255, 0.7);
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }
-        
-        .news-meta {
-            display: flex;
-            gap: 16px;
-            font-size: 0.8125rem;
-            color: var(--color-text-muted);
-        }
-        
-        .news-meta svg {
-            width: 14px;
-            height: 14px;
-            vertical-align: middle;
-            margin-right: 4px;
-        }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 48px 24px;
-            margin-top: 48px;
-            color: var(--color-text-muted);
-            font-size: 0.875rem;
-            border-top: 1px solid rgba(56, 189, 248, 0.1);
-        }
-        
-        footer a {
-            color: var(--color-primary);
-            text-decoration: none;
-        }
-        
-        footer a:hover {
-            color: var(--color-accent);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-            
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>科技日报 · The Tech Daily</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+ :root {
+ --ink: #1a1208;
+ --ink-light: #3d2f1a;
+ --paper: #f5f0e8;
+ --paper-dark: #ede6d5;
+ --rule: #2a1f0e;
+ --accent: #8b1a1a;
+ --gray: #6b5c45;
+ --light-gray: #c8b99a;
+ }
+
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+
+ body {
+ background: #d4c9b0;
+ font-family: 'Noto Serif SC', serif;
+ color: var(--ink);
+ min-height: 100vh;
+ padding: 20px;
+ }
+
+ .newspaper {
+ max-width: 1100px;
+ margin: 0 auto;
+ background: var(--paper);
+ box-shadow: 4px 4px 20px rgba(0,0,0,0.35);
+ position: relative;
+ overflow: hidden;
+ }
+
+ .newspaper::before {
+ content: '';
+ position: absolute;
+ inset: 0;
+ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+ pointer-events: none;
+ z-index: 10;
+ opacity: 0.6;
+ }
+
+ /* MASTHEAD */
+ .masthead {
+ padding: 16px 40px 0;
+ border-bottom: 3px double var(--rule);
+ }
+
+ .masthead-top {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ font-size: 11px;
+ color: var(--gray);
+ letter-spacing: 0.05em;
+ padding-bottom: 8px;
+ border-bottom: 1px solid var(--rule);
+ margin-bottom: 8px;
+ }
+
+ .paper-name {
+ font-family: 'Playfair Display', serif;
+ font-size: clamp(32px, 5vw, 56px);
+ text-align: center;
+ line-height: 1.1;
+ color: var(--ink);
+ font-weight: 900;
+ letter-spacing: -1px;
+ padding: 8px 0 12px;
+ }
+
+ .masthead-sub {
+ text-align: center;
+ font-family: 'Playfair Display', serif;
+ font-style: italic;
+ font-size: 13px;
+ color: var(--gray);
+ letter-spacing: 0.15em;
+ padding-bottom: 12px;
+ }
+
+ .masthead-meta {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ font-size: 11px;
+ color: var(--ink-light);
+ padding: 6px 0 10px;
+ border-top: 1px solid var(--rule);
+ }
+
+ .edition-tag {
+ background: var(--ink);
+ color: var(--paper);
+ padding: 2px 8px;
+ font-size: 10px;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ }
+
+ /* CONTENT AREA */
+ .content-area {
+ padding: 0 40px 40px;
+ position: relative;
+ z-index: 5;
+ }
+
+ /* SECTION HEADERS */
+ .section-header {
+ margin: 28px 0 16px;
+ text-align: center;
+ position: relative;
+ }
+
+ .section-header::before,
+ .section-header::after {
+ content: '';
+ display: block;
+ height: 1px;
+ background: var(--rule);
+ }
+ .section-header::before { margin-bottom: 6px; }
+ .section-header::after { margin-top: 6px; }
+
+ .section-title {
+ font-family: 'Playfair Display', serif;
+ font-size: 11px;
+ font-weight: 700;
+ letter-spacing: 0.35em;
+ text-transform: uppercase;
+ color: var(--ink);
+ display: inline-block;
+ padding: 0 14px;
+ background: var(--paper);
+ position: relative;
+ z-index: 1;
+ }
+
+ .thick-rule {
+ height: 3px;
+ background: var(--rule);
+ margin: 4px 0;
+ }
+
+ /* GITHUB TRENDING — 3 columns */
+ .trending-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ gap: 0;
+ border: 1px solid var(--rule);
+ }
+
+ .trending-item {
+ padding: 14px 16px;
+ border-right: 1px solid var(--light-gray);
+ border-bottom: 1px solid var(--light-gray);
+ transition: background 0.2s;
+ }
+
+ .trending-item:hover { background: var(--paper-dark); }
+ .trending-item:nth-child(3n) { border-right: none; }
+ .trending-item:nth-last-child(-n+3) { border-bottom: none; }
+
+ .trending-rank {
+ font-family: 'Playfair Display', serif;
+ font-size: 28px;
+ font-weight: 900;
+ color: var(--light-gray);
+ line-height: 1;
+ float: left;
+ margin-right: 10px;
+ margin-top: 2px;
+ }
+
+ .trending-name {
+ font-family: 'Playfair Display', serif;
+ font-weight: 700;
+ font-size: 14px;
+ color: var(--ink);
+ text-decoration: none;
+ display: block;
+ line-height: 1.3;
+ }
+
+ .trending-name:hover { color: var(--accent); }
+
+ .trending-author {
+ font-size: 10px;
+ color: var(--gray);
+ margin-bottom: 4px;
+ }
+
+ .trending-desc {
+ font-size: 11.5px;
+ color: var(--ink-light);
+ line-height: 1.5;
+ margin-top: 4px;
+ display: -webkit-box;
+ -webkit-line-clamp: 2;
+ -webkit-box-orient: vertical;
+ overflow: hidden;
+ }
+
+ .trending-meta {
+ margin-top: 6px;
+ display: flex;
+ gap: 10px;
+ font-size: 10px;
+ color: var(--gray);
+ }
+
+ /* NEWS — newspaper column layout */
+ .news-columns {
+ column-count: 3;
+ column-gap: 0;
+ column-rule: 1px solid var(--light-gray);
+ border: 1px solid var(--rule);
+ border-top: none;
+ }
+
+ .news-item {
+ break-inside: avoid;
+ padding: 14px 18px;
+ border-bottom: 1px solid var(--light-gray);
+ }
+
+ .news-category {
+ font-family: 'Playfair Display', serif;
+ font-size: 9px;
+ font-weight: 700;
+ letter-spacing: 0.2em;
+ text-transform: uppercase;
+ color: var(--accent);
+ margin-bottom: 4px;
+ }
+
+ .news-headline {
+ font-family: 'Playfair Display', serif;
+ font-size: 15px;
+ font-weight: 700;
+ line-height: 1.3;
+ margin-bottom: 6px;
+ }
+
+ .news-headline a {
+ color: var(--ink);
+ text-decoration: none;
+ }
+
+ .news-headline a:hover { color: var(--accent); }
+
+ .news-summary {
+ font-size: 12px;
+ line-height: 1.7;
+ color: var(--ink-light);
+ }
+
+ .news-byline {
+ font-size: 10px;
+ color: var(--gray);
+ font-style: italic;
+ margin-top: 6px;
+ }
+
+ /* FOOTER */
+ .newspaper-footer {
+ border-top: 3px double var(--rule);
+ padding: 10px 40px;
+ display: flex;
+ justify-content: space-between;
+ font-size: 10px;
+ color: var(--gray);
+ position: relative;
+ z-index: 5;
+ }
+
+ @media (max-width: 768px) {
+ body { padding: 10px; }
+ .masthead { padding: 12px 20px 0; }
+ .content-area { padding: 0 20px 30px; }
+ .trending-grid { grid-template-columns: 1fr 1fr; }
+ .news-columns { column-count: 1; }
+ .newspaper-footer { padding: 10px 20px; flex-direction: column; text-align: center; gap: 8px; }
+ }
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>📰 科技日报</h1>
-            <div class="date">2026年03月18日 · 太子为您精选</div>
-        </header>
-        
-        <!-- Hacker News -->
-        <section class="section">
-            <h2 class="section-title"><span>🔥</span> Hacker News 热门</h2>
-            <div class="news-grid" id="hn-grid"></div>
-        </section>
-        
-        <!-- Tech Blogs -->
-        <section class="section">
-            <h2 class="section-title"><span>📚</span> 科技博客精选</h2>
-            <div class="news-grid" id="blogs-grid"></div>
-        </section>
-        
-        <footer>
-            <p>🤖 由太子自动生成 | 数据来源: Hacker News + 科技博客</p>
-            <p style="margin-top: 8px;">
-                <a href="https://news.ycombinator.com" target="_blank">Hacker News</a>
-            </p>
-        </footer>
-    </div>
-    
-    <script>
-        const hnNews = [
-            {rank: 1, title: "微软的\"不可破解\"Xbox One已被\"Bliss\"黑客攻破", url: "https://www.tomshardware.com/video-games/console-gaming/microsofts-unhackable-xbox-one-has-been-hacked-by-bliss", source: "Tom's Hardware", desc: "2013年发布的主机最终通过电压故障注入被破解，允许在每个级别加载未签名代码。", score: "514分"},
-            {rank: 2, title: "Kagi Small Web", url: "https://kagi.com/smallweb/", source: "Kagi", desc: "发现独立博客和个人网站的精彩内容，支持小网站生态。", score: "702分"},
-            {rank: 3, title: "十年的Slug", url: "https://terathon.com/blog/decade-slug.html", source: "Terathon", desc: "一个游戏开发者十年来持续优化 slug 算法的故事。", score: "397分"},
-            {rank: 4, title: "Python 3.15的JIT现已回到正轨", url: "https://fidget-spinner.github.io/posts/jit-on-track.html", source: "Fidget Spinner", desc: "Python JIT 编译器的最新进展和未来规划。", score: "257分"},
-            {rank: 5, title: "Get Shit Done：元提示、上下文工程和规范驱动的开发系统", url: "https://github.com/gsd-build/get-shit-done", source: "GitHub", desc: "一套完整的 AI 辅助开发方法论和工具链。", score: "178分"},
-            {rank: 6, title: "我花了30年才解决这个视觉特效问题——绿屏问题", url: "https://www.youtube.com/watch?v=3Ploi723hg4", source: "YouTube", desc: "一位 VFX 艺术家分享他解决绿幕抠像难题的历程。", score: "160分"},
-            {rank: 7, title: "Unsloth Studio", url: "https://unsloth.ai/docs/new/studio", source: "Unsloth", desc: "高效训练和微调大语言模型的全新 IDE。", score: "157分"},
-            {rank: 8, title: "Mistral AI发布Forge", url: "https://mistral.ai/news/forge", source: "Mistral AI", desc: "Mistral 推出的企业级模型训练平台。", score: "111分"},
-            {rank: 9, title: "Chrome扩展：根据说话者语速自动调整视频播放速度", url: "https://github.com/ywong137/speech-speed", source: "GitHub", desc: "开源 Chrome 扩展，智能调节视频播放速度。", score: "88分"},
-            {rank: 10, title: "电子显微镜显示半导体中的\"鼠标咬痕\"缺陷", url: "https://news.cornell.edu/stories/2026/03/electron-microscopy-shows-mouse-bite-defects-semiconductors", source: "Cornell", desc: "康奈尔大学研究人员发现半导体制造中的新型缺陷。", score: "20分"}
-        ];
-        
-        const blogNews = [
-            {rank: 1, title: "开源Mamba 3发布，语言建模提升近4%，延迟降低", url: "https://venturebeat.com/technology/open-source-mamba-3-arrives-to-surpass-transformer-architecture-with-nearly", source: "VentureBeat", desc: "Mamba 3 超越 Transformer 架构，性能提升显著。"},
-            {rank: 2, title: "五角大楼计划让AI公司在机密数据上训练模型", url: "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/", source: "MIT Tech Review", desc: "国防部正在讨论为生成式 AI 公司建立安全训练环境。"},
-            {rank: 3, title: "Mistral押注\"自建AI\"，挑战企业市场的OpenAI和Anthropic", url: "https://techcrunch.com/2026/03/17/mistral-forge-nvidia-gtc-build-your-own-ai-enterprise/", source: "TechCrunch", desc: "Mistral Forge 让企业用自己的数据从头训练定制 AI 模型。"},
-            {rank: 4, title: "AGI不是多模态", url: "https://thegradient.pub/agi-is-not-multimodal/", source: "The Gradient", desc: "将语言重新投射为思维模式时，我们忽略了支撑智力的隐性理解。"},
-            {rank: 5, title: "World ID希望为每个AI代理绑定唯一的人类身份", url: "https://arstechnica.com/ai/2026/03/world-id-wants-you-to-put-a-cryptographically-unique-human-identity-behind-your-ai-agents/", source: "Ars Technica", desc: "虹膜扫描支持的代币可帮助阻止 AI 代理群压垮在线系统。"},
-            {rank: 6, title: "Meta将于6月关闭Meta Quest上的Horizon Worlds", url: "https://www.wired.com/story/meta-is-shutting-down-horizon-worlds-on-meta-quest/", source: "Wired", desc: "Meta 的 VR 社交体验将被终止，这是 Meta 精简业务的广泛举措之一。"},
-            {rank: 7, title: "你的AI代理权限过大了，只是你还看不到", url: "https://hackernoon.com/your-ai-agents-have-too-much-access-you-just-cant-see-it-yet", source: "Hacker Noon", desc: "企业多年未解决访问蔓延问题，AI 代理让问题恶化 10 倍。"},
-            {rank: 8, title: "Adam优化器是否会放大灾难性遗忘？", url: "https://hackernoon.com/does-the-adam-optimizer-amplify-catastrophic-forgetting", source: "Hacker Noon", desc: "灾难性遗忘不只是模型问题，还受训练和测量方式严重影响。"},
-            {rank: 9, title: "将个人智能的力量带给更多人", url: "https://blog.google/products-and-platforms/products/search/personal-intelligence-expansion/", source: "Google AI Blog", desc: "谷歌将个人智能扩展到搜索 AI 模式、Gemini 应用和 Chrome 中的 Gemini。"},
-            {rank: 10, title: "AI时代开源安全的最新投资", url: "https://blog.google/innovation-and-ai/technology/safety-security/ai-powered-open-source-security/", source: "Google AI Blog", desc: "谷歌进行新投资，开发工具和代码安全以提升开源安全性。"}
-        ];
-        
-        function renderNews(container, newsList) {
-            const grid = document.getElementById(container);
-            
-            newsList.forEach(news => {
-                const card = document.createElement('div');
-                card.className = 'news-card';
-                
-                const isTop3 = news.rank <= 3;
-                
-                card.innerHTML = `
-                    <div class="news-rank ${isTop3 ? 'top3' : ''}">${news.rank}</div>
-                    <div class="news-header">
-                        <a href="${news.url}" target="_blank" class="news-title">${news.title}</a>
-                        <span class="news-source">${news.source}</span>
-                    </div>
-                    <div class="news-desc">${news.desc}</div>
-                    ${news.score ? `<div class="news-meta"><span>📊 ${news.score}</span></div>` : ''}
-                `;
-                
-                grid.appendChild(card);
-            });
-        }
-        
-        renderNews('hn-grid', hnNews);
-        renderNews('blogs-grid', blogNews);
-    </script>
+
+<div class="newspaper">
+ <!-- MASTHEAD -->
+ <div class="masthead">
+ <div class="masthead-top">
+ <span>Vol. I · No. 077</span>
+ <span>ESTABLISHED 2026 · 每日出版</span>
+ <span>GRATIS · 科技精选</span>
+ </div>
+ <div class="paper-name">科技日报</div>
+ <div class="masthead-sub">AI · 开源 · 开发者 · Hacker News</div>
+ <div class="masthead-meta">
+ <span>2026 年 03 月 18 日 · 周三</span>
+ <span class="edition-tag">每日早报</span>
+ <span>⊙ 科技晴好</span>
+ </div>
+ </div>
+
+ <!-- CONTENT -->
+ <div class="content-area">
+ 
+ <!-- HACKER NEWS -->
+ <div class="section-header">
+ <div class="thick-rule"></div>
+ <div class="section-title">🔥 Hacker News 热门</div>
+ <div class="thick-rule"></div>
+ </div>
+ <div class="trending-grid">
+ <div class="trending-item">
+ <div class="trending-rank">01</div>
+ <div>
+ <div class="trending-author">Tom's Hardware</div>
+ <a class="trending-name" href="https://www.tomshardware.com/video-games/console-gaming/microsofts-unhackable-xbox-one-has-been-hacked-by-bliss" target="_blank">微软"不可破解"Xbox One被黑客攻破</a>
+ <div class="trending-desc">2013年发布的主机通过电压故障注入被破解，允许加载未签名代码</div>
+ <div class="trending-meta"><span>★ 514分</span><span>201 评论</span></div>
+ </div>
+ </div>
+ <div class="trending-item">
+ <div class="trending-rank">02</div>
+ <div>
+ <div class="trending-author">Kagi</div>
+ <a class="trending-name" href="https://kagi.com/smallweb/" target="_blank">Kagi Small Web</a>
+ <div class="trending-desc">发现独立博客和个人网站的精彩内容，支持小网站生态</div>
+ <div class="trending-meta"><span>★ 702分</span><span>195 评论</span></div>
+ </div>
+ </div>
+ <div class="trending-item">
+ <div class="trending-rank">03</div>
+ <div>
+ <div class="trending-author">Terathon</div>
+ <a class="trending-name" href="https://terathon.com/blog/decade-slug.html" target="_blank">十年的Slug算法优化</a>
+ <div class="trending-desc">一个游戏开发者十年来持续优化slug算法的故事</div>
+ <div class="trending-meta"><span>★ 397分</span><span>34 评论</span></div>
+ </div>
+ </div>
+ <div class="trending-item">
+ <div class="trending-rank">04</div>
+ <div>
+ <div class="trending-author">Fidget Spinner</div>
+ <a class="trending-name" href="https://fidget-spinner.github.io/posts/jit-on-track.html" target="_blank">Python 3.15的JIT现已回到正轨</a>
+ <div class="trending-desc">Python JIT编译器的最新进展和未来规划</div>
+ <div class="trending-meta"><span>★ 257分</span><span>94 评论</span></div>
+ </div>
+ </div>
+ <div class="trending-item">
+ <div class="trending-rank">05</div>
+ <div>
+ <div class="trending-author">GitHub</div>
+ <a class="trending-name" href="https://github.com/gsd-build/get-shit-done" target="_blank">Get Shit Done: 元提示开发系统</a>
+ <div class="trending-desc">一套完整的AI辅助开发方法论和工具链</div>
+ <div class="trending-meta"><span>★ 178分</span><span>105 评论</span></div>
+ </div>
+ </div>
+ <div class="trending-item">
+ <div class="trending-rank">06</div>
+ <div>
+ <div class="trending-author">YouTube</div>
+ <a class="trending-name" href="https://www.youtube.com/watch?v=3Ploi723hg4" target="_blank">30年解决绿屏VFX难题</a>
+ <div class="trending-desc">一位VFX艺术家分享解决绿幕抠像难题的历程</div>
+ <div class="trending-meta"><span>★ 160分</span><span>71 评论</span></div>
+ </div>
+ </div>
+ <div class="trending-item">
+ <div class="trending-rank">07</div>
+ <div>
+ <div class="trending-author">Unsloth</div>
+ <a class="trending-name" href="https://unsloth.ai/docs/new/studio" target="_blank">Unsloth Studio</a>
+ <div class="trending-desc">高效训练和微调大语言模型的全新IDE</div>
+ <div class="trending-meta"><span>★ 157分</span><span>33 评论</span></div>
+ </div>
+ </div>
+ <div class="trending-item">
+ <div class="trending-rank">08</div>
+ <div>
+ <div class="trending-author">Mistral AI</div>
+ <a class="trending-name" href="https://mistral.ai/news/forge" target="_blank">Mistral AI发布Forge</a>
+ <div class="trending-desc">Mistral推出的企业级模型训练平台</div>
+ <div class="trending-meta"><span>★ 111分</span><span>7 评论</span></div>
+ </div>
+ </div>
+ <div class="trending-item">
+ <div class="trending-rank">09</div>
+ <div>
+ <div class="trending-author">GitHub</div>
+ <a class="trending-name" href="https://github.com/ywong137/speech-speed" target="_blank">智能视频速度调节扩展</a>
+ <div class="trending-desc">开源Chrome扩展，根据说话者语速自动调节播放速度</div>
+ <div class="trending-meta"><span>★ 88分</span><span>26 评论</span></div>
+ </div>
+ </div>
+ </div>
+
+ <!-- TECH NEWS -->
+ <div class="section-header" style="margin-top:28px">
+ <div class="thick-rule"></div>
+ <div class="section-title">📚 科技博客精选</div>
+ <div class="thick-rule"></div>
+ </div>
+ <div class="news-columns">
+ <div class="news-item">
+ <div class="news-category">AI动态</div>
+ <div class="news-headline"><a href="https://venturebeat.com/technology/open-source-mamba-3-arrives-to-surpass-transformer-architecture-with-nearly" target="_blank">开源Mamba 3发布，超越Transformer</a></div>
+ <div class="news-summary">Mamba 3超越Transformer架构，语言建模提升近4%，延迟降低。</div>
+ <div class="news-byline">VentureBeat · 今日</div>
+ </div>
+ <div class="news-item">
+ <div class="news-category">行业洞察</div>
+ <div class="news-headline"><a href="https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/" target="_blank">五角大楼计划让AI公司训练机密数据</a></div>
+ <div class="news-summary">国防部正在讨论为生成式AI公司建立安全训练环境。</div>
+ <div class="news-byline">MIT Tech Review · 今日</div>
+ </div>
+ <div class="news-item">
+ <div class="news-category">AI动态</div>
+ <div class="news-headline"><a href="https://techcrunch.com/2026/03/17/mistral-forge-nvidia-gtc-build-your-own-ai-enterprise/" target="_blank">Mistral押注"自建AI"挑战OpenAI</a></div>
+ <div class="news-summary">Mistral Forge让企业用自己的数据从头训练定制AI模型。</div>
+ <div class="news-byline">TechCrunch · 今日</div>
+ </div>
+ <div class="news-item">
+ <div class="news-category">研究前沿</div>
+ <div class="news-headline"><a href="https://thegradient.pub/agi-is-not-multimodal/" target="_blank">AGI不是多模态</a></div>
+ <div class="news-summary">将语言重新投射为思维模式时，我们忽略了支撑智力的隐性理解。</div>
+ <div class="news-byline">The Gradient · 今日</div>
+ </div>
+ <div class="news-item">
+ <div class="news-category">AI安全</div>
+ <div class="news-headline"><a href="https://arstechnica.com/ai/2026/03/world-id-wants-you-to-put-a-cryptographically-unique-human-identity-behind-your-ai-agents/" target="_blank">World ID为AI代理绑定人类身份</a></div>
+ <div class="news-summary">虹膜扫描支持的代币可帮助阻止AI代理群压垮在线系统。</div>
+ <div class="news-byline">Ars Technica · 今日</div>
+ </div>
+ <div class="news-item">
+ <div class="news-category">行业洞察</div>
+ <div class="news-headline"><a href="https://www.wired.com/story/meta-is-shutting-down-horizon-worlds-on-meta-quest/" target="_blank">Meta关闭Horizon Worlds</a></div>
+ <div class="news-summary">Meta的VR社交体验将被终止，这是精简业务的广泛举措之一。</div>
+ <div class="news-byline">Wired · 今日</div>
+ </div>
+ <div class="news-item">
+ <div class="news-category">AI安全</div>
+ <div class="news-headline"><a href="https://hackernoon.com/your-ai-agents-have-too-much-access-you-just-cant-see-it-yet" target="_blank">你的AI代理权限过大了</a></div>
+ <div class="news-summary">企业多年未解决访问蔓延问题，AI代理让问题恶化10倍。</div>
+ <div class="news-byline">Hacker Noon · 今日</div>
+ </div>
+ <div class="news-item">
+ <div class="news-category">研究前沿</div>
+ <div class="news-headline"><a href="https://hackernoon.com/does-the-adam-optimizer-amplify-catastrophic-forgetting" target="_blank">Adam优化器会放大灾难性遗忘吗？</a></div>
+ <div class="news-summary">灾难性遗忘不只是模型问题，还受训练和测量方式严重影响。</div>
+ <div class="news-byline">Hacker Noon · 今日</div>
+ </div>
+ <div class="news-item">
+ <div class="news-category">AI产品</div>
+ <div class="news-headline"><a href="https://blog.google/products-and-platforms/products/search/personal-intelligence-expansion/" target="_blank">谷歌扩展个人智能功能</a></div>
+ <div class="news-summary">将个人智能扩展到搜索AI模式、Gemini应用和Chrome中的Gemini。</div>
+ <div class="news-byline">Google AI Blog · 今日</div>
+ </div>
+ </div>
+
+ </div>
+
+ <!-- FOOTER -->
+ <div class="newspaper-footer">
+ <span>科技日报 · 太子自动生成</span>
+ <span>生成时间：17:30</span>
+ <span>数据来源：Hacker News + 科技博客</span>
+ </div>
+</div>
+
 </body>
 </html>
