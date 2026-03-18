@@ -152,13 +152,13 @@
  /* GITHUB TRENDING — 3 columns */
  .trending-grid {
  display: grid;
- grid-template-columns: 1fr 1fr 1fr;
+ grid-template-columns: repeat(3, 1fr);
  gap: 0;
  border: 1px solid var(--rule);
  }
 
  .trending-item {
- padding: 14px 16px;
+ padding: 12px 14px;
  border-right: 1px solid var(--light-gray);
  border-bottom: 1px solid var(--light-gray);
  transition: background 0.2s;
@@ -170,19 +170,19 @@
 
  .trending-rank {
  font-family: 'Playfair Display', serif;
- font-size: 28px;
+ font-size: 24px;
  font-weight: 900;
  color: var(--light-gray);
  line-height: 1;
  float: left;
- margin-right: 10px;
+ margin-right: 8px;
  margin-top: 2px;
  }
 
  .trending-name {
  font-family: 'Playfair Display', serif;
  font-weight: 700;
- font-size: 14px;
+ font-size: 13px;
  color: var(--ink);
  text-decoration: none;
  display: block;
@@ -192,16 +192,16 @@
  .trending-name:hover { color: var(--accent); }
 
  .trending-author {
- font-size: 10px;
+ font-size: 9px;
  color: var(--gray);
- margin-bottom: 4px;
+ margin-bottom: 2px;
  }
 
  .trending-desc {
- font-size: 11.5px;
+ font-size: 10.5px;
  color: var(--ink-light);
- line-height: 1.5;
- margin-top: 4px;
+ line-height: 1.4;
+ margin-top: 3px;
  display: -webkit-box;
  -webkit-line-clamp: 2;
  -webkit-box-orient: vertical;
@@ -209,10 +209,10 @@
  }
 
  .trending-meta {
- margin-top: 6px;
+ margin-top: 4px;
  display: flex;
- gap: 10px;
- font-size: 10px;
+ gap: 8px;
+ font-size: 9px;
  color: var(--gray);
  }
 
@@ -227,26 +227,26 @@
 
  .news-item {
  break-inside: avoid;
- padding: 14px 18px;
+ padding: 12px 16px;
  border-bottom: 1px solid var(--light-gray);
  }
 
  .news-category {
  font-family: 'Playfair Display', serif;
- font-size: 9px;
+ font-size: 8px;
  font-weight: 700;
  letter-spacing: 0.2em;
  text-transform: uppercase;
  color: var(--accent);
- margin-bottom: 4px;
+ margin-bottom: 3px;
  }
 
  .news-headline {
  font-family: 'Playfair Display', serif;
- font-size: 15px;
+ font-size: 13px;
  font-weight: 700;
  line-height: 1.3;
- margin-bottom: 6px;
+ margin-bottom: 4px;
  }
 
  .news-headline a {
@@ -257,16 +257,25 @@
  .news-headline a:hover { color: var(--accent); }
 
  .news-summary {
- font-size: 12px;
- line-height: 1.7;
+ font-size: 11px;
+ line-height: 1.6;
  color: var(--ink-light);
  }
 
  .news-byline {
- font-size: 10px;
+ font-size: 9px;
  color: var(--gray);
  font-style: italic;
- margin-top: 6px;
+ margin-top: 4px;
+ }
+
+ /* IT之家专栏 */
+ .ithome-columns {
+ column-count: 2;
+ column-gap: 0;
+ column-rule: 1px solid var(--light-gray);
+ border: 1px solid var(--rule);
+ border-top: none;
  }
 
  /* FOOTER */
@@ -286,7 +295,7 @@
  .masthead { padding: 12px 20px 0; }
  .content-area { padding: 0 20px 30px; }
  .trending-grid { grid-template-columns: 1fr 1fr; }
- .news-columns { column-count: 1; }
+ .news-columns, .ithome-columns { column-count: 1; }
  .newspaper-footer { padding: 10px 20px; flex-direction: column; text-align: center; gap: 8px; }
  }
 </style>
@@ -302,7 +311,7 @@
  <span>GRATIS · 科技精选</span>
  </div>
  <div class="paper-name">科技日报</div>
- <div class="masthead-sub">AI · 开源 · 开发者 · Hacker News</div>
+ <div class="masthead-sub">AI · 开源 · 开发者 · Hacker News · IT之家</div>
  <div class="masthead-meta">
  <span>2026 年 03 月 18 日 · 周三</span>
  <span class="edition-tag">每日早报</span>
@@ -313,157 +322,81 @@
  <!-- CONTENT -->
  <div class="content-area">
  
+ <!-- GITHUB TRENDING -->
+ <div class="section-header">
+ <div class="thick-rule"></div>
+ <div class="section-title">⬡ GitHub 开源风云榜</div>
+ <div class="thick-rule"></div>
+ </div>
+ <div class="trending-grid">
+ <div class="trending-item"><div class="trending-rank">01</div><div><div class="trending-author">NVIDIA</div><a class="trending-name" href="https://github.com/NVIDIA/NemoClaw" target="_blank">NemoClaw</a><div class="trending-desc">NVIDIA官方插件，用于安全安装OpenClaw</div><div class="trending-meta"><span>★ 4.3K</span><span>TypeScript</span></div></div></div>
+ <div class="trending-item"><div class="trending-rank">02</div><div><div class="trending-author">aiming-lab</div><a class="trending-name" href="https://github.com/aiming-lab/AutoResearchClaw" target="_blank">AutoResearchClaw</a><div class="trending-desc">全自主研究系统——从想法到论文</div><div class="trending-meta"><span>★ 4.2K</span><span>Python</span></div></div></div>
+ <div class="trending-item"><div class="trending-rank">03</div><div><div class="trending-author">calesthio</div><a class="trending-name" href="https://github.com/calesthio/Crucix" target="_blank">Crucix</a><div class="trending-desc">个人智能代理，从多数据源监控世界</div><div class="trending-meta"><span>★ 3.1K</span><span>JavaScript</span></div></div></div>
+ <div class="trending-item"><div class="trending-rank">04</div><div><div class="trending-author">webadderall</div><a class="trending-name" href="https://github.com/webadderall/Recordly" target="_blank">Recordly</a><div class="trending-desc">免费开源的Screen Studio替代品</div><div class="trending-meta"><span>★ 2.4K</span><span>TypeScript</span></div></div></div>
+ <div class="trending-item"><div class="trending-rank">05</div><div><div class="trending-author">pasky</div><a class="trending-name" href="https://github.com/pasky/chrome-cdp-skill" target="_blank">chrome-cdp-skill</a><div class="trending-desc">让AI代理访问你的Chrome浏览器会话</div><div class="trending-meta"><span>★ 2.1K</span><span>JavaScript</span></div></div></div>
+ <div class="trending-item"><div class="trending-rank">06</div><div><div class="trending-author">Narcooo</div><a class="trending-name" href="https://github.com/Narcooo/inkos" target="_blank">inkos</a><div class="trending-desc">自主小说写作CLI代理</div><div class="trending-meta"><span>★ 1.5K</span><span>TypeScript</span></div></div></div>
+ <div class="trending-item"><div class="trending-rank">07</div><div><div class="trending-author">MoonshotAI</div><a class="trending-name" href="https://github.com/MoonshotAI/Attention-Residuals" target="_blank">Attention-Residuals</a><div class="trending-desc">Moonshot AI出品</div><div class="trending-meta"><span>★ 1.4K</span><span>Unknown</span></div></div></div>
+ <div class="trending-item"><div class="trending-rank">08</div><div><div class="trending-author">jackwener</div><a class="trending-name" href="https://github.com/jackwener/opencli" target="_blank">opencli</a><div class="trending-desc">让任何网站成为你的CLI</div><div class="trending-meta"><span>★ 1.4K</span><span>TypeScript</span></div></div></div>
+ <div class="trending-item"><div class="trending-rank">09</div><div><div class="trending-author">skernelx</div><a class="trending-name" href="https://github.com/skernelx/tavily-key-generator" target="_blank">tavily-key-generator</a><div class="trending-desc">Tavily和Firecrawl注册自动化工具包</div><div class="trending-meta"><span>★ 1.3K</span><span>Python</span></div></div></div>
+ <div class="trending-item"><div class="trending-rank">10</div><div><div class="trending-author">uditgoenka</div><a class="trending-name" href="https://github.com/uditgoenka/autoresearch" target="_blank">autoresearch</a><div class="trending-desc">Claude Autoresearch技能</div><div class="trending-meta"><span>★ 1.2K</span><span>Shell</span></div></div></div>
+ <div class="trending-item"><div class="trending-rank">11</div><div><div class="trending-author">Infatoshi</div><a class="trending-name" href="https://github.com/Infatoshi/OpenSquirrel" target="_blank">OpenSquirrel</a><div class="trending-desc">Claude Code控制面板，Rust/GPUI构建</div><div class="trending-meta"><span>★ 1.0K</span><span>Rust</span></div></div></div>
+ <div class="trending-item"><div class="trending-rank">12</div><div><div class="trending-author">Lum1104</div><a class="trending-name" href="https://github.com/Lum1104/Understand-Anything" target="_blank">Understand-Anything</a><div class="trending-desc">将代码库转换为交互式知识图谱</div><div class="trending-meta"><span>★ 722</span><span>TypeScript</span></div></div></div>
+ </div>
+
  <!-- HACKER NEWS -->
  <div class="section-header">
  <div class="thick-rule"></div>
  <div class="section-title">🔥 Hacker News 热门</div>
  <div class="thick-rule"></div>
  </div>
- <div class="trending-grid">
- <div class="trending-item">
- <div class="trending-rank">01</div>
- <div>
- <div class="trending-author">Tom's Hardware</div>
- <a class="trending-name" href="https://www.tomshardware.com/video-games/console-gaming/microsofts-unhackable-xbox-one-has-been-hacked-by-bliss" target="_blank">微软"不可破解"Xbox One被黑客攻破</a>
- <div class="trending-desc">2013年发布的主机通过电压故障注入被破解，允许加载未签名代码</div>
- <div class="trending-meta"><span>★ 514分</span><span>201 评论</span></div>
- </div>
- </div>
- <div class="trending-item">
- <div class="trending-rank">02</div>
- <div>
- <div class="trending-author">Kagi</div>
- <a class="trending-name" href="https://kagi.com/smallweb/" target="_blank">Kagi Small Web</a>
- <div class="trending-desc">发现独立博客和个人网站的精彩内容，支持小网站生态</div>
- <div class="trending-meta"><span>★ 702分</span><span>195 评论</span></div>
- </div>
- </div>
- <div class="trending-item">
- <div class="trending-rank">03</div>
- <div>
- <div class="trending-author">Terathon</div>
- <a class="trending-name" href="https://terathon.com/blog/decade-slug.html" target="_blank">十年的Slug算法优化</a>
- <div class="trending-desc">一个游戏开发者十年来持续优化slug算法的故事</div>
- <div class="trending-meta"><span>★ 397分</span><span>34 评论</span></div>
- </div>
- </div>
- <div class="trending-item">
- <div class="trending-rank">04</div>
- <div>
- <div class="trending-author">Fidget Spinner</div>
- <a class="trending-name" href="https://fidget-spinner.github.io/posts/jit-on-track.html" target="_blank">Python 3.15的JIT现已回到正轨</a>
- <div class="trending-desc">Python JIT编译器的最新进展和未来规划</div>
- <div class="trending-meta"><span>★ 257分</span><span>94 评论</span></div>
- </div>
- </div>
- <div class="trending-item">
- <div class="trending-rank">05</div>
- <div>
- <div class="trending-author">GitHub</div>
- <a class="trending-name" href="https://github.com/gsd-build/get-shit-done" target="_blank">Get Shit Done: 元提示开发系统</a>
- <div class="trending-desc">一套完整的AI辅助开发方法论和工具链</div>
- <div class="trending-meta"><span>★ 178分</span><span>105 评论</span></div>
- </div>
- </div>
- <div class="trending-item">
- <div class="trending-rank">06</div>
- <div>
- <div class="trending-author">YouTube</div>
- <a class="trending-name" href="https://www.youtube.com/watch?v=3Ploi723hg4" target="_blank">30年解决绿屏VFX难题</a>
- <div class="trending-desc">一位VFX艺术家分享解决绿幕抠像难题的历程</div>
- <div class="trending-meta"><span>★ 160分</span><span>71 评论</span></div>
- </div>
- </div>
- <div class="trending-item">
- <div class="trending-rank">07</div>
- <div>
- <div class="trending-author">Unsloth</div>
- <a class="trending-name" href="https://unsloth.ai/docs/new/studio" target="_blank">Unsloth Studio</a>
- <div class="trending-desc">高效训练和微调大语言模型的全新IDE</div>
- <div class="trending-meta"><span>★ 157分</span><span>33 评论</span></div>
- </div>
- </div>
- <div class="trending-item">
- <div class="trending-rank">08</div>
- <div>
- <div class="trending-author">Mistral AI</div>
- <a class="trending-name" href="https://mistral.ai/news/forge" target="_blank">Mistral AI发布Forge</a>
- <div class="trending-desc">Mistral推出的企业级模型训练平台</div>
- <div class="trending-meta"><span>★ 111分</span><span>7 评论</span></div>
- </div>
- </div>
- <div class="trending-item">
- <div class="trending-rank">09</div>
- <div>
- <div class="trending-author">GitHub</div>
- <a class="trending-name" href="https://github.com/ywong137/speech-speed" target="_blank">智能视频速度调节扩展</a>
- <div class="trending-desc">开源Chrome扩展，根据说话者语速自动调节播放速度</div>
- <div class="trending-meta"><span>★ 88分</span><span>26 评论</span></div>
- </div>
- </div>
+ <div class="news-columns">
+ <div class="news-item"><div class="news-category">硬件破解</div><div class="news-headline"><a href="https://www.tomshardware.com/video-games/console-gaming/microsofts-unhackable-xbox-one-has-been-hacked-by-bliss" target="_blank">微软"不可破解"Xbox One被黑客攻破</a></div><div class="news-summary">2013年发布的主机通过电压故障注入被破解，允许在每个级别加载未签名代码。</div><div class="news-byline">Tom's Hardware · 514分</div></div>
+ <div class="news-item"><div class="news-category">小网站生态</div><div class="news-headline"><a href="https://kagi.com/smallweb/" target="_blank">Kagi Small Web：发现独立博客的精彩</a></div><div class="news-summary">Kagi推出Small Web项目，帮助用户发现独立博客和个人网站的精彩内容。</div><div class="news-byline">Kagi · 702分</div></div>
+ <div class="news-item"><div class="news-category">游戏开发</div><div class="news-headline"><a href="https://terathon.com/blog/decade-slug.html" target="_blank">十年的Slug：算法优化之旅</a></div><div class="news-summary">一位游戏开发者分享十年来持续优化slug算法的技术故事。</div><div class="news-byline">Terathon · 397分</div></div>
+ <div class="news-item"><div class="news-category">编程语言</div><div class="news-headline"><a href="https://fidget-spinner.github.io/posts/jit-on-track.html" target="_blank">Python 3.15的JIT现已回到正轨</a></div><div class="news-summary">Python JIT编译器项目重新启动，性能优化指日可待。</div><div class="news-byline">Fidget Spinner · 257分</div></div>
+ <div class="news-item"><div class="news-category">开发工具</div><div class="news-headline"><a href="https://github.com/gsd-build/get-shit-done" target="_blank">Get Shit Done：元提示开发系统</a></div><div class="news-summary">一套完整的AI辅助开发方法论和工具链，提升开发效率。</div><div class="news-byline">GitHub · 178分</div></div>
+ <div class="news-item"><div class="news-category">视觉特效</div><div class="news-headline"><a href="https://www.youtube.com/watch?v=3Ploi723hg4" target="_blank">30年解决绿屏VFX难题</a></div><div class="news-summary">一位VFX艺术家分享他花了30年解决绿幕抠像难题的历程。</div><div class="news-byline">YouTube · 160分</div></div>
+ <div class="news-item"><div class="news-category">AI工具</div><div class="news-headline"><a href="https://unsloth.ai/docs/new/studio" target="_blank">Unsloth Studio：高效LLM训练IDE</a></div><div class="news-summary">Unsloth推出全新IDE，支持高效训练和微调大语言模型。</div><div class="news-byline">Unsloth · 157分</div></div>
+ <div class="news-item"><div class="news-category">企业AI</div><div class="news-headline"><a href="https://mistral.ai/news/forge" target="_blank">Mistral AI发布Forge企业平台</a></div><div class="news-summary">Mistral推出企业级模型训练平台，支持自定义模型训练。</div><div class="news-byline">Mistral AI · 111分</div></div>
+ <div class="news-item"><div class="news-category">浏览器扩展</div><div class="news-headline"><a href="https://github.com/ywong137/speech-speed" target="_blank">智能视频速度调节Chrome扩展</a></div><div class="news-summary">开源扩展根据说话者语速自动调节视频播放速度。</div><div class="news-byline">GitHub · 88分</div></div>
  </div>
 
  <!-- TECH NEWS -->
- <div class="section-header" style="margin-top:28px">
+ <div class="section-header">
  <div class="thick-rule"></div>
  <div class="section-title">📚 科技博客精选</div>
  <div class="thick-rule"></div>
  </div>
  <div class="news-columns">
- <div class="news-item">
- <div class="news-category">AI动态</div>
- <div class="news-headline"><a href="https://venturebeat.com/technology/open-source-mamba-3-arrives-to-surpass-transformer-architecture-with-nearly" target="_blank">开源Mamba 3发布，超越Transformer</a></div>
- <div class="news-summary">Mamba 3超越Transformer架构，语言建模提升近4%，延迟降低。</div>
- <div class="news-byline">VentureBeat · 今日</div>
+ <div class="news-item"><div class="news-category">AI架构</div><div class="news-headline"><a href="https://venturebeat.com/technology/open-source-mamba-3-arrives-to-surpass-transformer-architecture-with-nearly" target="_blank">开源Mamba 3发布，超越Transformer</a></div><div class="news-summary">Mamba 3超越Transformer架构，语言建模提升近4%，延迟显著降低。</div><div class="news-byline">VentureBeat · 今日</div></div>
+ <div class="news-item"><div class="news-category">国防AI</div><div class="news-headline"><a href="https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/" target="_blank">五角大楼计划让AI公司训练机密数据</a></div><div class="news-summary">国防部正在讨论为生成式AI公司建立安全训练环境。</div><div class="news-byline">MIT Tech Review · 今日</div></div>
+ <div class="news-item"><div class="news-category">企业AI</div><div class="news-headline"><a href="https://techcrunch.com/2026/03/17/mistral-forge-nvidia-gtc-build-your-own-ai-enterprise/" target="_blank">Mistral押注"自建AI"挑战OpenAI</a></div><div class="news-summary">Mistral Forge让企业用自己的数据从头训练定制AI模型。</div><div class="news-byline">TechCrunch · 今日</div></div>
+ <div class="news-item"><div class="news-category">AI研究</div><div class="news-headline"><a href="https://thegradient.pub/agi-is-not-multimodal/" target="_blank">AGI不是多模态</a></div><div class="news-summary">将语言重新投射为思维模式时，我们忽略了支撑智力的隐性理解。</div><div class="news-byline">The Gradient · 今日</div></div>
+ <div class="news-item"><div class="news-category">AI安全</div><div class="news-headline"><a href="https://arstechnica.com/ai/2026/03/world-id-wants-you-to-put-a-cryptographically-unique-human-identity-behind-your-ai-agents/" target="_blank">World ID为AI代理绑定人类身份</a></div><div class="news-summary">虹膜扫描支持的代币可帮助阻止AI代理群压垮在线系统。</div><div class="news-byline">Ars Technica · 今日</div></div>
+ <div class="news-item"><div class="news-category">元宇宙</div><div class="news-headline"><a href="https://www.wired.com/story/meta-is-shutting-down-horizon-worlds-on-meta-quest/" target="_blank">Meta关闭Horizon Worlds</a></div><div class="news-summary">Meta的VR社交体验将被终止，这是精简业务的广泛举措之一。</div><div class="news-byline">Wired · 今日</div></div>
+ <div class="news-item"><div class="news-category">AI安全</div><div class="news-headline"><a href="https://hackernoon.com/your-ai-agents-have-too-much-access-you-just-cant-see-it-yet" target="_blank">你的AI代理权限过大了</a></div><div class="news-summary">企业多年未解决访问蔓延问题，AI代理让问题恶化10倍。</div><div class="news-byline">Hacker Noon · 今日</div></div>
+ <div class="news-item"><div class="news-category">机器学习</div><div class="news-headline"><a href="https://hackernoon.com/does-the-adam-optimizer-amplify-catastrophic-forgetting" target="_blank">Adam优化器会放大灾难性遗忘吗？</a></div><div class="news-summary">灾难性遗忘不只是模型问题，还受训练和测量方式严重影响。</div><div class="news-byline">Hacker Noon · 今日</div></div>
+ <div class="news-item"><div class="news-category">Google AI</div><div class="news-headline"><a href="https://blog.google/products-and-platforms/products/search/personal-intelligence-expansion/" target="_blank">谷歌扩展个人智能功能</a></div><div class="news-summary">将个人智能扩展到搜索AI模式、Gemini应用和Chrome中的Gemini。</div><div class="news-byline">Google AI Blog · 今日</div></div>
+ <div class="news-item"><div class="news-category">开源安全</div><div class="news-headline"><a href="https://blog.google/innovation-and-ai/technology/safety-security/ai-powered-open-source-security/" target="_blank">AI时代开源安全的最新投资</a></div><div class="news-summary">谷歌进行新投资，开发工具和代码安全以提升开源安全性。</div><div class="news-byline">Google AI Blog · 今日</div></div>
+ <div class="news-item"><div class="news-category">云计算</div><div class="news-headline"><a href="https://blog.cloudflare.com/custom-regions/" target="_blank">Cloudflare推出Custom Regions</a></div><div class="news-summary">Cloudflare发布Custom Regions功能，提供精准数据控制能力。</div><div class="news-byline">Cloudflare Blog · 今日</div></div>
+ <div class="news-item"><div class="news-category">电动汽车</div><div class="news-headline"><a href="https://electrek.co/2026/03/17/evs-wiped-out-Oil-demand-equal-to-70-of-irans-exports-in-2025/" target="_blank">电动车2025年减少石油需求相当于伊朗出口70%</a></div><div class="news-summary">电动汽车的普及对全球石油需求产生显著影响。</div><div class="news-byline">Electrek · 今日</div></div>
  </div>
- <div class="news-item">
- <div class="news-category">行业洞察</div>
- <div class="news-headline"><a href="https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/" target="_blank">五角大楼计划让AI公司训练机密数据</a></div>
- <div class="news-summary">国防部正在讨论为生成式AI公司建立安全训练环境。</div>
- <div class="news-byline">MIT Tech Review · 今日</div>
+
+ <!-- IT之家 -->
+ <div class="section-header">
+ <div class="thick-rule"></div>
+ <div class="section-title">🏠 IT之家 · 国内科技</div>
+ <div class="thick-rule"></div>
  </div>
- <div class="news-item">
- <div class="news-category">AI动态</div>
- <div class="news-headline"><a href="https://techcrunch.com/2026/03/17/mistral-forge-nvidia-gtc-build-your-own-ai-enterprise/" target="_blank">Mistral押注"自建AI"挑战OpenAI</a></div>
- <div class="news-summary">Mistral Forge让企业用自己的数据从头训练定制AI模型。</div>
- <div class="news-byline">TechCrunch · 今日</div>
- </div>
- <div class="news-item">
- <div class="news-category">研究前沿</div>
- <div class="news-headline"><a href="https://thegradient.pub/agi-is-not-multimodal/" target="_blank">AGI不是多模态</a></div>
- <div class="news-summary">将语言重新投射为思维模式时，我们忽略了支撑智力的隐性理解。</div>
- <div class="news-byline">The Gradient · 今日</div>
- </div>
- <div class="news-item">
- <div class="news-category">AI安全</div>
- <div class="news-headline"><a href="https://arstechnica.com/ai/2026/03/world-id-wants-you-to-put-a-cryptographically-unique-human-identity-behind-your-ai-agents/" target="_blank">World ID为AI代理绑定人类身份</a></div>
- <div class="news-summary">虹膜扫描支持的代币可帮助阻止AI代理群压垮在线系统。</div>
- <div class="news-byline">Ars Technica · 今日</div>
- </div>
- <div class="news-item">
- <div class="news-category">行业洞察</div>
- <div class="news-headline"><a href="https://www.wired.com/story/meta-is-shutting-down-horizon-worlds-on-meta-quest/" target="_blank">Meta关闭Horizon Worlds</a></div>
- <div class="news-summary">Meta的VR社交体验将被终止，这是精简业务的广泛举措之一。</div>
- <div class="news-byline">Wired · 今日</div>
- </div>
- <div class="news-item">
- <div class="news-category">AI安全</div>
- <div class="news-headline"><a href="https://hackernoon.com/your-ai-agents-have-too-much-access-you-just-cant-see-it-yet" target="_blank">你的AI代理权限过大了</a></div>
- <div class="news-summary">企业多年未解决访问蔓延问题，AI代理让问题恶化10倍。</div>
- <div class="news-byline">Hacker Noon · 今日</div>
- </div>
- <div class="news-item">
- <div class="news-category">研究前沿</div>
- <div class="news-headline"><a href="https://hackernoon.com/does-the-adam-optimizer-amplify-catastrophic-forgetting" target="_blank">Adam优化器会放大灾难性遗忘吗？</a></div>
- <div class="news-summary">灾难性遗忘不只是模型问题，还受训练和测量方式严重影响。</div>
- <div class="news-byline">Hacker Noon · 今日</div>
- </div>
- <div class="news-item">
- <div class="news-category">AI产品</div>
- <div class="news-headline"><a href="https://blog.google/products-and-platforms/products/search/personal-intelligence-expansion/" target="_blank">谷歌扩展个人智能功能</a></div>
- <div class="news-summary">将个人智能扩展到搜索AI模式、Gemini应用和Chrome中的Gemini。</div>
- <div class="news-byline">Google AI Blog · 今日</div>
- </div>
+ <div class="ithome-columns">
+ <div class="news-item"><div class="news-category">手机</div><div class="news-headline"><a href="https://www.ithome.com/0/930/130.htm" target="_blank">追觅AURORA手机负责人：全球手机市场80%利润被苹果拿走</a></div><div class="news-summary">追觅AURORA手机负责人刘扬表示，国产厂商应携手突围。</div><div class="news-byline">IT之家 · 今日</div></div>
+ <div class="news-item"><div class="news-category">自动驾驶</div><div class="news-headline"><a href="https://www.ithome.com/0/930/129.htm" target="_blank">卓驭（原大疆车载）计划港股上市</a></div><div class="news-summary">卓驭科技进行Pre-IPO轮融资20亿元，投前估值约125亿元。</div><div class="news-byline">IT之家 · 今日</div></div>
+ <div class="news-item"><div class="news-category">AI硬件</div><div class="news-headline"><a href="https://www.ithome.com/0/930/128.htm" target="_blank">机械革命推出全球首款搭载智谱GLM-5-Turbo的迷你主机</a></div><div class="news-summary">机械革命携手智谱推出预装GLM-5-Turbo的imini E300迷你主机。</div><div class="news-byline">IT之家 · 今日</div></div>
+ <div class="news-item"><div class="news-category">微软</div><div class="news-headline"><a href="https://www.ithome.com/0/930/126.htm" target="_blank">微软推送3月更新，修复Outlook特殊字符BUG</a></div><div class="news-summary">修复经典版Outlook中"£/®"等字符变问号的问题。</div><div class="news-byline">IT之家 · 今日</div></div>
+ <div class="news-item"><div class="news-category">小米</div><div class="news-headline"><a href="https://www.ithome.com/0/930/121.htm" target="_blank">雷军：2200MPa小米超强钢荣获科技创新成果一等奖</a></div><div class="news-summary">小米超强钢荣获中国产学研合作促进会科技创新成果一等奖。</div><div class="news-byline">IT之家 · 今日</div></div>
+ <div class="news-item"><div class="news-category">小米汽车</div><div class="news-headline"><a href="https://www.ithome.com/0/930/079.htm" target="_blank">小米HAD辅助驾驶全新升级XLA认知大模型</a></div><div class="news-summary">新一代SU7全系交付即搭载，首次打通"辅助驾驶"和"智能驾驶"。</div><div class="news-byline">IT之家 · 今日</div></div>
+ <div class="news-item"><div class="news-category">智能家居</div><div class="news-headline"><a href="https://www.ithome.com/0/930/125.htm" target="_blank">石头迷你洗烘一体机M1S Ultra实拍</a></div><div class="news-summary">超水解洁净系统，小身材全功能，定价3299元。</div><div class="news-byline">IT之家 · 今日</div></div>
+ <div class="news-item"><div class="news-category">Firefox</div><div class="news-headline"><a href="https://www.omgubuntu.co.uk/2026/03/firefox-adding-a-free-vpn" target="_blank">Firefox 149添加内置免费VPN</a></div><div class="news-summary">Firefox 149新增内置免费VPN，每月50GB流量。</div><div class="news-byline">OMG! Ubuntu · 今日</div></div>
  </div>
 
  </div>
@@ -471,8 +404,8 @@
  <!-- FOOTER -->
  <div class="newspaper-footer">
  <span>科技日报 · 太子自动生成</span>
- <span>生成时间：17:30</span>
- <span>数据来源：Hacker News + 科技博客</span>
+ <span>生成时间：17:42</span>
+ <span>数据来源：GitHub + Hacker News + 科技博客 + IT之家</span>
  </div>
 </div>
 
